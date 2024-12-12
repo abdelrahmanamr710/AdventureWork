@@ -49,6 +49,66 @@ namespace AdventureWorksApi.Controllers
             return CreatedAtAction("GetProduct", new { id = product.ProductID }, product);
         }
 
+        // PUT: api/Product/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduct(int id, Product product)
+        {
+            if (id != product.ProductID)
+            {
+                return BadRequest("Product ID mismatch.");
+            }
+
+            var existingProduct = await _context.Products.FindAsync(id);
+            if (existingProduct == null)
+            {
+                return NotFound("Product not found.");
+            }
+
+            // Update fields of the existing product
+            existingProduct.Name = product.Name;
+            existingProduct.ListPrice = product.ListPrice;
+            // Add any other fields you want to update
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return NotFound("Product no longer exists.");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.ProductID == id);
+        }
+
+
+        // DELETE: api/Product/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound("Product not found.");
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
     }
 }

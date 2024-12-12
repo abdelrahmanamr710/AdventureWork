@@ -170,3 +170,4 @@ C:\Users\abdelrahman\Documents\SWproject\AdventureWorksApi\obj\Debug\net8.0\Adve
 C:\Users\abdelrahman\Documents\SWproject\AdventureWorksApi\obj\Debug\net8.0\AdventureWorksApi.genruntimeconfig.cache
 C:\Users\abdelrahman\Documents\SWproject\AdventureWorksApi\obj\Debug\net8.0\ref\AdventureWorksApi.dll
 C:\Users\abdelrahman\Documents\SWproject\AdventureWorksApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\abdelrahman\Documents\SWproject\AdventureWorksApi\obj\Debug\net8.0\AdventureWorksApi.sourcelink.json
